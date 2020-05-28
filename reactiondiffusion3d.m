@@ -52,7 +52,7 @@ while t < 5000
                 NAc(idx1,idx2,idx3) = Ac(idx1,idx2,idx3)+(Da*LaplaceA-Ac(idx1,idx2,idx3)*Bc(idx1,idx2,idx3)*Bc(idx1,idx2,idx3)+f*(1-Ac(idx1,idx2,idx3)))*dt;
 
                 LaplaceB = -Bc(idx1,idx2,idx3)+Bc(idx1-1,idx2,idx3)*.2/2.8+Bc(idx1+1,idx2,idx3)*.2/2.8+Bc(idx1,idx2-1,idx3)*.2/2.8+Bc(idx1,idx2+1,idx3)*.2/2.8+Bc(idx1,idx2,idx3-1)*.2/2.8+Bc(idx1,idx2,idx3+1)*.2/2.8+Bc(idx1-1,idx2+1,idx3)*.1/2.8+Bc(idx1-1,idx2-1,idx3)*.1/2.8+Bc(idx1+1,idx2-1,idx3)*.1/2.8+Bc(idx1+1,idx2+1,idx3)*.1/2.8+Bc(idx1-1,idx2,idx3+1)*.1/2.8+Bc(idx1-1,idx2,idx3-1)*.1/2.8+Bc(idx1+1,idx2,idx3-1)*.1/2.8+Bc(idx1+1,idx2,idx3+1)*.1/2.8+Bc(idx1,idx2+1,idx3-1)*.1/2.8+Bc(idx1,idx2-1,idx3-1)*.1/2.8+Bc(idx1,idx2-1,idx3+1)*.1/2.8+Bc(idx1,idx2+1,idx3+1)*.1/2.8+Bc(idx1-1,idx2-1,idx3-1)*0.05/2.8+Bc(idx1-1,idx2-1,idx3+1)*0.05/2.8+Bc(idx1-1,idx2+1,idx3-1)*0.05/2.8+Bc(idx1-1,idx2+1,idx3+1)*0.05/2.8+Bc(idx1+1,idx2-1,idx3-1)*0.05/2.8+Bc(idx1+1,idx2-1,idx3+1)*0.05/2.8+Bc(idx1+1,idx2+1,idx3-1)*0.05/2.8+Bc(idx1+1,idx2+1,idx3+1)*0.05/2.8;
-                NBc(idx1,idx2,idx3) = Bc(idx1,idx2,idx3)+(Da*LaplaceB+Ac(idx1,idx2,idx3)*Bc(idx1,idx2,idx3)*Bc(idx1,idx2,idx3)-(f+k)*(Bc(idx1,idx2,idx3)))*dt;
+                NBc(idx1,idx2,idx3) = Bc(idx1,idx2,idx3)+(Db*LaplaceB+Ac(idx1,idx2,idx3)*Bc(idx1,idx2,idx3)*Bc(idx1,idx2,idx3)-(f+k)*(Bc(idx1,idx2,idx3)))*dt;
                 
                 if NAc(idx1,idx2,idx3) > 1
                     NAc(idx1,idx2,idx3) = 1;
