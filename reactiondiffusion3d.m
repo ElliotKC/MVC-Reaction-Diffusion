@@ -1,4 +1,4 @@
-size = 50;
+size = 100;
 
 Ac = zeros(size,size,size); %A concentration
 Ac(:) = 1;
@@ -7,7 +7,7 @@ Bc = zeros(size,size,size); %B concentration
 t = 0; %time
 dt = 1; %length of time step
 
-smdmap = linspace(-pi,pi,10);
+smdmap = linspace(-pi,pi,10); %ignore this section
 smd1 = 1;
 smd2 = 1;
 while smd1 < 11
@@ -19,20 +19,24 @@ while smd1 < 11
     smd1 = smd1 + 1;
 end
 
-Bc(25:26,25:26,25:26) = 1; %peturbance
+Bc(48:53,28:33,48:53) = 1; %peturbance
+Bc(48:53,28:33,48:53) = 1; %peturbance
 %Bc(146:155,146:155) = smoothP;
 
 Da = 1; %A diffusion rate
 Db = .5; %b diffusion rate
-f = .0545; %feed rate
-k = .062; %kill rate
+f = .046; %feed rate
+k = .06; %kill rate
 
 ratioindex = zeros(size,size,floor(t/dt)); %keeps track of data for visualizing
 
 iteration = 0;
-
+[X,Y,Z] = meshgrid(1:1:size);
+xslice = [25,50,75];   
+yslice = [50];
+zslice = 50;
 while t < 5000
-    iteration = iteration + 1;
+    iteration = iteration + 1
     
     NAc = zeros(size,size,size); %new A concentration
     NAc(:,:) = 1;
@@ -81,21 +85,16 @@ while t < 5000
     Bc = NBc;
     
     figure(1)
-    [X,Y,Z] = meshgrid(1:1:50);
+    
     V = Bc./(Ac+Bc);
-    xslice = [12.5,25,37.5];   
-    yslice = [25];
-    zslice = 25;
-    slice(X,Y,Z,V,xslice,yslice,zslice)
+    surf(V(:,:,50));
+    %slice(X,Y,Z,V,xslice,yslice,zslice)
     view(2)
     shading interp
     t = t+dt;
 end
 
-[X,Y,Z] = meshgrid(1:1:50);
+[X,Y,Z] = meshgrid(1:1:size);
 V = Bc./(Ac+Bc);
-xslice = [12.5,25,37.5];   
-yslice = [25];
-zslice = 25;
 slice(X,Y,Z,V,xslice,yslice,zslice)
-
+shading interp
